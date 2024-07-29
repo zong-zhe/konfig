@@ -26,8 +26,10 @@ jobs:
         run: |
           cd ./examples/server/app_sidecar/prod
           kcl run > kcl_output.txt 2>&1
+        shell: /usr/bin/bash -e {0}
 
       - name: Upload KCL output
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: kcl-output
