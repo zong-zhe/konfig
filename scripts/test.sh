@@ -11,7 +11,7 @@ set -e
 # OUTPUT_FILE="/Users/zongz/Workspace/kusionstack/konfig/test_results.txt"
 
 # 清空输出文件
-> "$OUTPUT_FILE"
+# > "$OUTPUT_FILE"
 
 find ./examples -name "kcl.mod" -exec dirname {} \; | while read -r dir; do
     if (cd "$dir" && kcl run); then
