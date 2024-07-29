@@ -25,4 +25,10 @@ jobs:
       - name: Run KCL in specific directory
         run: |
           cd ./examples/server/app_sidecar/prod
-          kcl run
+          kcl run > kcl_output.txt
+
+      - name: Upload KCL output
+        uses: actions/upload-artifact@v3
+        with:
+          name: kcl-output
+          path: ./examples/server/app_sidecar/prod/kcl_output.txt
