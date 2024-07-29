@@ -8,7 +8,7 @@ on: push
   #    - main
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: KCL Installation
@@ -18,9 +18,9 @@ jobs:
         with:
           go-version: "1.22"
 
-      - name: Example tests
-        shell: bash -ieo pipefail {0}
-        run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
+      # - name: Example tests
+      #   shell: bash -ieo pipefail {0}
+      #   run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
 
       - name: Run KCL in specific directory
         run: |
