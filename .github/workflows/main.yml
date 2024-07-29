@@ -18,6 +18,9 @@ jobs:
         with:
           go-version: "1.19"
 
+      - name: Show Os Version
+        run: uname -a
+
       - name: Example tests
         shell: bash -ieo pipefail {0}
         run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
