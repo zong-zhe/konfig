@@ -21,6 +21,9 @@ jobs:
       - name: Show Os Version
         run: uname -a
 
+      - name: Print test.txt
+        run: cat ./output.txt
+
       - name: Example tests
         shell: bash -ieo pipefail {0}
         run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
