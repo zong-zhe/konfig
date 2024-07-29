@@ -21,3 +21,8 @@ jobs:
       - name: Example tests
         shell: bash -ieo pipefail {0}
         run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
+      
+      - name: Run KCL in specific directory
+        run: |
+          cd ./examples/server/app_sidecar/prod
+          kcl run
