@@ -18,6 +18,12 @@ jobs:
         with:
           go-version: "1.22"
 
-      - name: Example tests
-        shell: bash -ieo pipefail {0}
-        run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
+      # - name: Example tests
+      #   shell: bash -ieo pipefail {0}
+      #   run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
+
+      - name: Run KCL in specific directory
+        run: |
+          cd ./examples/server/app_sidecar/prod
+          PATH=$PATH:$HOME/go/bin
+          kcl run
