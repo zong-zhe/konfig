@@ -1,0 +1,10 @@
+{
+    "name": "Ubuntu Dev Container",
+    "image": "ghcr.io/zong-zhe/ubuntu",
+    "runArgs": ["--init"],
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y curl wget git"
+  }
