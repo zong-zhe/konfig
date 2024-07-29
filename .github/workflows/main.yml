@@ -23,12 +23,14 @@ jobs:
       #   run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
 
       - name: Run KCL in specific directory 1
+        shell: bash -ieo pipefail {0}
         run: |
           cd ./examples/appops/nginx-example/dev
           PATH=$PATH:$HOME/go/bin
           kcl run
 
       - name: Run KCL in specific directory
+        shell: bash -ieo pipefail {0}
         run: |
           cd ./examples/server/app_sidecar/prod
           PATH=$PATH:$HOME/go/bin
