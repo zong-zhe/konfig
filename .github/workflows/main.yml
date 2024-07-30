@@ -11,12 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: KCL Installation
-        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+      # - name: KCL Installation
+      #   run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
 
       - uses: actions/setup-go@v1
         with:
-          go-version: "1.19"
+          go-version: "1.22"
+
+      - name: KCL Installation
+        run: go install kcl-lang.io/cli/cmd/kcl@main
 
       - name: Example tests
         shell: bash -ieo pipefail {0}
