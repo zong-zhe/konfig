@@ -7,7 +7,7 @@ VolumePatch = lambda volumes: [volume.Volume], containers: [{str:}] -> [{str:}] 
             volumeMounts = sum([[
                 {
                     name: volume.name
-                    mountPath: mount.path
+                    mountPath: "mount.path"
                     subPath: mount.subPath
                     readOnly: mount.readOnly or Undefined
                 } for mount in volume.mounts if mount.container == _container.name or mount.container == "*"
