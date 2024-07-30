@@ -1,0 +1,1 @@
+/workspace/scripts/test.sh: 17: kcl: not found

@@ -1,9 +1,13 @@
 {
-    "name": "Ubuntu Dev Container",
-    "image": "ghcr.io/zong-zhe/forkcl",
-    "runArgs": ["--init"],
-    "mounts": [
-      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-    ],
-    "workspaceFolder": "/workspace"
-  }
+  "name": "Ubuntu Dev Container",
+  "image": "ghcr.io/zong-zhe/forkcl",
+  "runArgs": [
+    "--init",
+    "--platform",
+    "linux/amd64"
+  ],
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "workspaceFolder": "/workspace"
+}
