@@ -17,17 +17,20 @@ appConfiguration: frontend.Server {
             resource = res_tpl.small
         }
     ]
-    # volumes = [
-    #     v.Volume {
-    #         name = "log-storage"
-    #         volumeSource = v.EmptyDir {}
-    #         mounts = [
-    #             v.Mount {
-    #                 container = "sidecar-log-collector"
-    #                 path = "/mnt/log"
-    #                 readOnly = True
-    #             }
-    #         ]
-    #     }
-    # ]
+    volumes = [
+        v.Volume {
+            name = "log-storage"
+            volumeSource = v.Secret {
+            secretName = "kubeconfig"
+            defaultMode =  420
+        }
+            mounts = [
+                v.Mount {
+                    container = "sidecar-log-collector"
+                    path = "/mnt/log"
+                    readOnly = True
+                }
+            ]
+        }
+    ]
 }
