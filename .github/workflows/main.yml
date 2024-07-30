@@ -21,3 +21,10 @@ jobs:
       - name: Example tests
         shell: bash -ieo pipefail {0}
         run: PATH=$PATH:$HOME/go/bin ./scripts/test.sh
+
+      - name: Upload KCL output
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: kcl-output
+          path: kcl_run_output.txt

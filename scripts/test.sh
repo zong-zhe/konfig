@@ -7,11 +7,17 @@
 
 set -e
 
+# Define the output file
+output_file="kcl_run_output.txt"
+
+# Clear the output file if it exists
+> "$output_file"
+
 find ./examples -name "kcl.mod" -exec dirname {} \; | while read -r dir; do
-    if (cd "$dir" && kcl run); then
-        echo "Test SUCCESSED - $dir"
+    if (cd "$dir" && kcl run >> "../$output_file" 2>&1); then
+        echo "\033[32mTest SUCCESSED - $dir\033[0m\n" >> "../$output_file"
     else
-        echo "Test FAILED - $dir"
+        echo "\033[31mTest FAILED - $dir\033[0m\n" >> "../$output_file"
         exit 1
     fi
 done
