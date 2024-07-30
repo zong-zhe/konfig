@@ -20,10 +20,7 @@ appConfiguration: frontend.Server {
     volumes = [
         v.Volume {
             name = "log-storage"
-            volumeSource = v.Secret {
-            secretName = "kubeconfig"
-            defaultMode =  420
-        }
+            volumeSource = v.EmptyDir {}
             mounts = [
                 v.Mount {
                     container = "sidecar-log-collector"
