@@ -1,0 +1,37 @@
+appConfiguration:
+  workloadType: Deployment
+  renderType: Server
+  replicas: 1
+  image: gcr.io/google-samples/gb-frontend:v4
+  schedulingStrategy:
+    resource:
+      cpu: 0.1
+      memory: 104857600.0
+      disk: 1073741824.0
+  mainContainer:
+    name: main
+    useBuiltInEnv: false
+  sidecarContainers:
+  - name: sidecar-log-collector
+    env:
+      FILES_TO_COLLECT:
+        name: FILES_TO_COLLECT
+        value: /mnt/log/synthetic-count.log /mnt/log/synthetic-dates.log
+    resource:
+      cpu: 1
+      memory: 2147483648.0
+      disk: 21474836480.0
+    image: gcr.io/google_containers/fluentd-sidecar-es:1.0
+  useBuiltInLabels: true
+  useBuiltInSelector: true
+  volumes:
+  - name: log-storage
+    volumeSource:
+      secretName: kubeconfig
+      defaultMode: 420
+    mounts:
+    - container: sidecar-log-collector
+      path: /mnt/log
+      readOnly: true
+  needNamespace: true
+  enableMonitoring: false
