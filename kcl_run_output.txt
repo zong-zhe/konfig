@@ -1,0 +1,21 @@
+      - env:
+        - name: FILES_TO_COLLECT
+          value: /mnt/log/synthetic-count.log /mnt/log/synthetic-dates.log
+        image: gcr.io/google_containers/fluentd-sidecar-es:1.0
+        name: sidecar-log-collector
+        resources:
+          limits:
+            cpu: '1'
+            memory: '2Gi'
+            ephemeral-storage: '20Gi'
+          requests:
+            cpu: '1'
+            memory: '2Gi'
+            ephemeral-storage: '20Gi'
+        volumeMounts:
+        - mountPath: mount.path
+          name: log-storage
+          readOnly: true
+      volumes:
+      - emptyDir: {}
+        name: log-storage
