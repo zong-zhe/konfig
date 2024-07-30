@@ -15,5 +15,6 @@ find ./examples -name "kcl.mod" -exec dirname {} \; | while read -r dir; do
         exit 1
     fi
     # Remove the .kclvm directory and its contents
+    echo "\033[32mcleaning up .kclvm\033[0m\n"
     rm -rf "$dir/.kclvm"
 done
